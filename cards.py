@@ -2,6 +2,7 @@ import random
 
 class Deck():
     cards = []
+
     def __init__(self):
         self.cards = [
         {'name':'Ace', 'suit':'Spades', 'value':11},
@@ -57,3 +58,24 @@ class Deck():
         {'name':'King', 'suit':'Hearts', 'value':10},
         {'name':'King', 'suit':'Diamonds', 'value':10},
         ]
+
+    #shuffle the deck
+    def shuffle(self):
+        random.shuffle(self.cards)
+
+    #return value of cards
+    def get_value(self,cards):
+        value = 0
+        for card in cards:
+            value = card['value'] + value
+        return value
+
+    #deal a card
+    def deal(self,deck,hand,dealtcards):
+        shoe = deck #must be a list
+        playerhand = hand #must be a list
+        count = 0
+        while count < dealtcards:
+            card = shoe.pop()
+            playerhand.append(card)
+            count = count + 1
